@@ -5,11 +5,27 @@ void main() {
     home:Ninja()
   ));
 }
-class Ninja extends StatelessWidget {
+class Ninja extends StatefulWidget {
+  @override
+  _NinjaState createState() => _NinjaState();
+}
+
+class _NinjaState extends State<Ninja> {
+  int count=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            count+=1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
+        elevation: 0,
+      ),
       appBar: AppBar(
         title: Text("Ninja App"),
         centerTitle: true,
@@ -60,7 +76,7 @@ class Ninja extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              '8',
+              '$count',
               style: TextStyle(
                   color: Colors.amber[600],
                   letterSpacing: 1.0,
